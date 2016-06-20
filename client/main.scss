@@ -1,0 +1,23 @@
+@import './style/sb-admin';
+@import './style/_no-found';
+@import './style/_product-list-container';
+
+.main {
+  padding: 80px 15px 40px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#login-buttons {
+  margin: 18px;
+  font-size: 14px;
+}
+
+.thumbnail {
+  width: 222px;
+  height: 222px;
+}

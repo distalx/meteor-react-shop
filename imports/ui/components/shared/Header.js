@@ -20,7 +20,7 @@ class Header extends Component {
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav navbar-right">
-              <li><Link to="/cartItems"><i className="fa fa-shopping-cart"></i> 購物車(2)</Link></li>
+              <li><Link to="/cartItems"><i className="fa fa-shopping-cart"></i> My Cart (2)</Link></li>
               <li>
                 { Roles.userIsInRole(Meteor.userId(), 'admin') ?
                   <Link to="/eFdeHqVzb9a2y4tA">Admin</Link> : ''

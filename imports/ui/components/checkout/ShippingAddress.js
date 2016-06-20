@@ -27,7 +27,7 @@ class ShippingAddress extends Component {
               </div>
             </div>
             <div className="form-group ">
-              <select name="country" id="country" className="form-control" placeholder="country" >
+              <select name="country" id="country" className="form-control" placeholder="country" defaultValue="US" >
                 <option value="AR">Argentina</option>
                 <option value="AU">Australia</option>
                 <option value="AT">Austria</option>
@@ -116,14 +116,14 @@ class ShippingAddress extends Component {
                 <option value="UA">Ukraine</option>
                 <option value="AE">United Arab Emirates</option>
                 <option value="GB">United Kingdom</option>
-                <option value="US" selected="selected">USA</option>
+                <option value="US">USA</option>
                 <option value="UZ">Uzbekistan</option>
                 <option value="VN">Vietnam</option>
               </select>
             </div>
           </div>
         </div>
-      </div>      
+      </div>
     )
   }
 }

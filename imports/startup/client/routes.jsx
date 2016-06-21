@@ -4,12 +4,12 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 // route components
 import App from '../../ui/layouts/App'
-import ProductListContainer from '../../ui/components/product/ProductListContainer'
+import ProductListContainer from '../../ui/containers/ProductListContainer'
+import CartItemListContainer from '../../ui/containers/CartItemListContainer'
+import CheckoutContainer from '../../ui/containers/CheckoutContainer'
 import ProductMain from '../../ui/components/product/ProductMain'
-import CartItemListContainer from '../../ui/components/cart/CartItemListContainer'
-import CheckoutContainer from '../../ui/components/checkout/CheckoutContainer'
-import NotFoundPage from '../../ui/pages/NotFoundPage'
 import Admin from '../../ui/layouts/Admin'
+import NotFoundPage from '../../ui/pages/NotFoundPage'
 
 export const renderRoutes = () => (
   <Router history={browserHistory}>

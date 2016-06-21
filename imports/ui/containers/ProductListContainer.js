@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { createContainer } from 'meteor/react-meteor-data'
 
-import { Products } from '../../../../imports/api/products/products';
-import ProductList from './ProductList'
+import { Products } from '../../../imports/api/products/products';
+import ProductList from '../components/product/ProductList'
 
 class ProductListContainer extends Component {
   render() {

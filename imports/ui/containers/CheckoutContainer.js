@@ -2,13 +2,13 @@ import { Meteor } from 'meteor/meteor'
 import React, { Component } from 'react'
 import { createContainer } from 'meteor/react-meteor-data'
 
-import { Carts } from '../../../api/carts/carts'
-import CheckoutDetail from './CheckoutDetail'
-import NameAndEmail from './NameAndEmail'
-import ShippingAddress from './ShippingAddress'
-import PaymentMethod from './PaymentMethod'
-import TermsAndConditions from './TermsAndConditions'
-import Redirect from '../shared/Redirect'
+import { Carts } from '../../api/carts/carts'
+import CheckoutDetail from '../components/checkout/CheckoutDetail'
+import NameAndEmail from '../components/checkout/NameAndEmail'
+import ShippingAddress from '../components/checkout/ShippingAddress'
+import PaymentMethod from '../components/checkout/PaymentMethod'
+import TermsAndConditions from '../components/checkout/TermsAndConditions'
+import Redirect from '../components/shared/Redirect'
 
 class CheckoutContainer extends Component {
 

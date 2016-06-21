@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { createContainer } from 'meteor/react-meteor-data'
 
-import CartItemList from './CartItemList'
-import Amount from './Amount'
-import { Carts } from '../../../api/carts/carts'
-import Redirect from '../shared/Redirect'
+import CartItemList from '../components/cart/CartItemList'
+import Amount from '../components/cart/Amount'
+import { Carts } from '../../api/carts/carts'
+import Redirect from '../components/shared/Redirect'
 
 
 class CartItemListContainer extends Component {

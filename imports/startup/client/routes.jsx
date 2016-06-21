@@ -2,17 +2,16 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
-import NoFound from '../../ui/pages/NoFound'
-
+// route components
 import App from '../../ui/layouts/App'
 import ProductListContainer from '../../ui/components/product/ProductListContainer'
 import ProductMain from '../../ui/components/product/ProductMain'
 import CartItemListContainer from '../../ui/components/cart/CartItemListContainer'
 import CheckoutContainer from '../../ui/components/checkout/CheckoutContainer'
-
+import NotFoundPage from '../../ui/pages/NotFoundPage'
 import Admin from '../../ui/layouts/Admin'
 
-export default routes = (
+export const renderRoutes = () => (
   <Router history={browserHistory}>
     <Route path='/' component={App}>
       <IndexRoute component={ProductListContainer} />
@@ -24,6 +23,6 @@ export default routes = (
     <Route path='/eFdeHqVzb9a2y4tA' component={Admin}>
     </Route>
 
-    <Route path="*" component={NoFound}/>
+    <Route path="*" component={NotFoundPage}/>
   </Router>
 )

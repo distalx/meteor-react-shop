@@ -55,4 +55,8 @@ class CartItem extends Component {
   }
 }
 
+CartItem.propTypes = {
+	cartItem: React.PropTypes.object.isRequired
+}
+
 export default CartItem

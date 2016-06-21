@@ -104,6 +104,10 @@ class ProductMain extends Component {
   }
 }
 
+ProductMain.propTypes = {
+  product: React.PropTypes.object.isRequired
+}
+
 export default createContainer((props) => {
   Meteor.subscribe('products')
   // rember to subscribe cart from server

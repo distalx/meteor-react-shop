@@ -30,4 +30,8 @@ class Amount extends Component {
   }
 }
 
+Amount.propTypes = {
+	cartItems: React.PropTypes.array.isRequired
+}
+
 export default Amount

@@ -63,4 +63,8 @@ class CheckoutDetail extends Component {
   }
 }
 
+CheckoutDetail.propTypes = {
+  cartItems: React.PropTypes.array.isRequired
+}
+
 export default CheckoutDetail

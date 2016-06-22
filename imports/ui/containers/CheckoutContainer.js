@@ -31,6 +31,14 @@ class CheckoutContainer extends Component {
     }
   }
 
+  changeAddressNoticeState(address, address2, city, state, zip) {
+    if (address && address2 && city && state && zip) {
+      this.setState({ showAddressNotice: false })
+    } else {
+      this.setState({ showAddressNotice: true })
+    }
+  }
+
   render () {
     if(!this.props.cart) { return <Redirect /> }
 
@@ -45,7 +53,7 @@ class CheckoutContainer extends Component {
           <div className="col-md-8">
             <NameAndEmail changeNameAndEmailNoticeState={this.changeNameAndEmailNoticeState.bind(this)}/>
             <hr/>
-            <ShippingAddress />
+            <ShippingAddress changeAddressNoticeState={this.changeAddressNoticeState.bind(this)}/>
             <hr/>
             <PaymentMethod />
             <hr/>
@@ -64,6 +72,7 @@ class CheckoutContainer extends Component {
                   </div>
                     <Notices
                       showNameAndEmailNotice={this.state.showNameAndEmailNotice}
+                      showAddressNotice={this.state.showAddressNotice}
                     />
                 </div>
               </div>

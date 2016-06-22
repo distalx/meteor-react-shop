@@ -1,6 +1,52 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 
 class ShippingAddress extends Component {
+  changeAddress() {
+    const address = ReactDOM.findDOMNode(this.refs.address).value.trim()
+    ReactDOM.findDOMNode(this.refs.address).value = address
+    this.checkFilled()
+  }
+
+  changeAddress2() {
+    const address2 = ReactDOM.findDOMNode(this.refs.address2).value.trim()
+    ReactDOM.findDOMNode(this.refs.address2).value = address2
+    this.checkFilled()
+  }
+
+  changeCity() {
+    const city = ReactDOM.findDOMNode(this.refs.city).value.trim()
+    ReactDOM.findDOMNode(this.refs.city).value = city
+    this.checkFilled()
+  }
+
+  changeState() {
+    const state = ReactDOM.findDOMNode(this.refs.state).value.trim()
+    ReactDOM.findDOMNode(this.refs.state).value = state
+    this.checkFilled()
+  }
+
+  changeZip() {
+    const zip = ReactDOM.findDOMNode(this.refs.zip).value.trim()
+    ReactDOM.findDOMNode(this.refs.zip).value = zip
+    this.checkFilled()
+  }
+
+  changeCountry() {
+    const country = ReactDOM.findDOMNode(this.refs.country).value.trim()
+    ReactDOM.findDOMNode(this.refs.country).value = country
+  }
+
+  checkFilled() {
+    const address = ReactDOM.findDOMNode(this.refs.address).value.trim()
+    const address2 = ReactDOM.findDOMNode(this.refs.address2).value.trim()
+    const city = ReactDOM.findDOMNode(this.refs.city).value.trim()
+    const state = ReactDOM.findDOMNode(this.refs.state).value.trim()
+    const zip = ReactDOM.findDOMNode(this.refs.zip).value.trim()
+
+    this.props.changeAddressNoticeState(address, address2, city, state, zip)
+  }
+
   render() {
     return(
       <div className="row" id="step-2">
@@ -8,26 +54,26 @@ class ShippingAddress extends Component {
           <div className="col-md-12">
             <h3>Shipping Address</h3>
             <div className="form-group">
-              <input type="text" placeholder="Address Line 1" name="address" className="form-control" />
+              <input type="text" placeholder="Address Line 1" ref="address" className="form-control" onChange={this.changeAddress.bind(this)} />
             </div>
             <div className="form-group">
-              <input type="text" placeholder="Address Line 2" name="address2" className="form-control" />
+              <input type="text" placeholder="Address Line 2" ref="address2" className="form-control" onChange={this.changeAddress2.bind(this)}/>
             </div>
             <div className="form-group">
-              <input type="text" placeholder="City" className="form-control" name="city" />
+              <input type="text" placeholder="City" className="form-control" ref="city" onChange={this.changeCity.bind(this)} />
             </div>
             <div className="form-group">
               <div className="row">
                 <div className="col-md-2">
-                  <input type="text" placeholder="State" className="form-control" name="state" />
+                  <input type="text" placeholder="State" className="form-control" ref="state" onChange={this.changeState.bind(this)} />
                 </div>
                 <div className="col-md-2">
-                  <input type="text" placeholder="Post Code" className="form-control" name="zip" />
+                  <input type="text" placeholder="Post Code" className="form-control" ref="zip" onChange={this.changeZip.bind(this)} />
                 </div>
               </div>
             </div>
             <div className="form-group ">
-              <select name="country" id="country" className="form-control" placeholder="country" defaultValue="US" >
+              <select name="country" ref="country" className="form-control" placeholder="country" defaultValue="US" onChange={this.changeCountry.bind(this)} >
                 <option value="AR">Argentina</option>
                 <option value="AU">Australia</option>
                 <option value="AT">Austria</option>

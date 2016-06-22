@@ -2,37 +2,26 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 class NameAndEmail extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-
-    this.state = {
-      hasName: false,
-      hasEmail: false
-    }
   }
 
   changeName() {
     const name = ReactDOM.findDOMNode(this.refs.nameInput).value.trim()
-
     ReactDOM.findDOMNode(this.refs.nameInput).value = name
-
-    if(name){
-      this.setState({hasName: true})
-    } else {
-      this.setState({hasName: false})
-    }
+    this.checkFilled()
   }
 
   changeEmail() {
     const email = ReactDOM.findDOMNode(this.refs.emailInput).value.trim()
-
     ReactDOM.findDOMNode(this.refs.emailInput).vaule = email
+    this.checkFilled()
+  }
 
-    if(email){
-      this.setState({hasEmail: true})
-    } else {
-      this.setState({hasEmail: false})
-    }
+  checkFilled() {
+    const name = ReactDOM.findDOMNode(this.refs.nameInput).value.trim()
+    const email = ReactDOM.findDOMNode(this.refs.emailInput).value.trim()
+    this.props.changeNameAndEmailNoticeState(name, email)
   }
 
   render(){

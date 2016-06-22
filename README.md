@@ -39,10 +39,4 @@ Same question above.
 
 The first time login with admin account, `Roles.userIsInRole(Meteor.userId(), 'admin')` will return false.
 
-But when you change page it will return ture.
-
-### 4. Pass one component state to another
-
-Let `TermsAndConditions.js` to know whether user has filled name, email, address and so on.
-
-So I can hide message based on user input.
+But when you change page it will return true.

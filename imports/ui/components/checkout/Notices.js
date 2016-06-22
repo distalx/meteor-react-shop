@@ -13,6 +13,10 @@ class Notices extends Component {
     return <li>Your shipping address</li>
   }
 
+  showTermsNotice() {
+    return <li>agreement to our <a href="#">Terms and Conditions</a></li>
+  }
+
   render() {
     return(
       <div className="col-md-8">
@@ -20,7 +24,7 @@ class Notices extends Component {
           All we need is
           { this.props.showNameAndEmailNotice ? this.showNameAndEmailNotice() : '' }
           { this.props.showAddressNotice ? this.showAddressNotice() : '' }
-          <li>agreement to our <a href="#">Terms and Conditions</a></li>
+          { this.props.showTermsNotice ? this.showTermsNotice() : '' }
         </div>
         <div className="alert alert-success">
           <h5> <i className="glyphicon glyphicon-thumbs-up"></i> Good to go!</h5>

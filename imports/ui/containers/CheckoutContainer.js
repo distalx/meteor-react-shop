@@ -39,6 +39,10 @@ class CheckoutContainer extends Component {
     }
   }
 
+  changeTermsNoticeState() {
+    this.setState({ showTermsNotice: !this.state.showTermsNotice })
+  }
+
   render () {
     if(!this.props.cart) { return <Redirect /> }
 
@@ -62,7 +66,7 @@ class CheckoutContainer extends Component {
                 <h3>Terms and Conditions</h3>
                 <div className="checkbox">
                   <label>
-                  <input type="checkbox" />
+                  <input type="checkbox" onClick={this.changeTermsNoticeState.bind(this)} />
                   I agree to <a href="#">Terms and Conditions</a>
                   </label>
                 </div>
@@ -73,6 +77,7 @@ class CheckoutContainer extends Component {
                     <Notices
                       showNameAndEmailNotice={this.state.showNameAndEmailNotice}
                       showAddressNotice={this.state.showAddressNotice}
+                      showTermsNotice={this.state.showTermsNotice}
                     />
                 </div>
               </div>

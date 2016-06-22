@@ -14,8 +14,8 @@ class CartItem extends Component {
     Bert.alert( 'Product Removed.', 'info', 'growl-bottom-right' )
   }
 
-  changeQuantity() {
-    const quantity = ReactDOM.findDOMNode(this.refs.quantityInput).value.trim()
+  changeQuantity(event) {
+    const quantity = event.target.value;
     Meteor.call('changeQuantity', this.props.cartItem.productId, quantity)
   }
 
@@ -40,7 +40,6 @@ class CartItem extends Component {
               className="form-control input-sm"
               type="number"
               value={cartItem.quantity}
-              ref="quantityInput"
               onChange={this.changeQuantity.bind(this)}
             />
           </div>

@@ -2,39 +2,33 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 class ShippingAddress extends Component {
-  changeAddress() {
-    const address = ReactDOM.findDOMNode(this.refs.address).value.trim()
-    ReactDOM.findDOMNode(this.refs.address).value = address
+  changeAddress(event) {
+    const address = event.target.value;
     this.checkFilled()
   }
 
-  changeAddress2() {
-    const address2 = ReactDOM.findDOMNode(this.refs.address2).value.trim()
-    ReactDOM.findDOMNode(this.refs.address2).value = address2
+  changeAddress2(event) {
+    const address2 = event.target.value;
     this.checkFilled()
   }
 
-  changeCity() {
-    const city = ReactDOM.findDOMNode(this.refs.city).value.trim()
-    ReactDOM.findDOMNode(this.refs.city).value = city
+  changeCity(event) {
+    const city = event.target.value;
     this.checkFilled()
   }
 
-  changeState() {
-    const state = ReactDOM.findDOMNode(this.refs.state).value.trim()
-    ReactDOM.findDOMNode(this.refs.state).value = state
+  changeState(event) {
+    const state = event.target.value;
     this.checkFilled()
   }
 
-  changeZip() {
-    const zip = ReactDOM.findDOMNode(this.refs.zip).value.trim()
-    ReactDOM.findDOMNode(this.refs.zip).value = zip
+  changeZip(event) {
+    const zip = event.target.value;
     this.checkFilled()
   }
 
-  changeCountry() {
-    const country = ReactDOM.findDOMNode(this.refs.country).value.trim()
-    ReactDOM.findDOMNode(this.refs.country).value = country
+  changeCountry(event) {
+    const county = event.target.value;
   }
 
   checkFilled() {

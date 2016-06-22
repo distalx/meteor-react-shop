@@ -6,15 +6,13 @@ class NameAndEmail extends Component {
     super(props)
   }
 
-  changeName() {
-    const name = ReactDOM.findDOMNode(this.refs.nameInput).value.trim()
-    ReactDOM.findDOMNode(this.refs.nameInput).value = name
+  changeName(event) {
+    const name = event.target.value;
     this.checkFilled()
   }
 
-  changeEmail() {
-    const email = ReactDOM.findDOMNode(this.refs.emailInput).value.trim()
-    ReactDOM.findDOMNode(this.refs.emailInput).vaule = email
+  changeEmail(event) {
+    const email = event.target.value;
     this.checkFilled()
   }
 

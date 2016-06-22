@@ -6,7 +6,7 @@ class PayButton extends Component {
   }
 
   renderPayButton () {
-    if (this.props.pay) {
+    if (this.props.canPay) {
       return <a href="#" className="btn btn-info" >Pay Now</a>
     } else {
       return <a href="#" className="btn btn-default" disabled="disabled">Pay Now</a>

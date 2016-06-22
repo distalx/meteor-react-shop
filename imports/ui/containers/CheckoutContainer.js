@@ -16,31 +16,47 @@ class CheckoutContainer extends Component {
     super(props)
 
     this.state = {
-      showNameAndEmailNotice: true,
-      showAddressNotice: true,
-      showTermsNotice: true,
+      hideNameAndEmailNotice: false,
+      hideAddressNotice: false,
+      hideTermsNotice: false,
       canPay: false
     }
   }
 
   changeNameAndEmailNoticeState(name, email) {
+    // setState() does not immediately mutate this.state but creates a pending state transition.
+    // If you want a function to be executed after the state change occurs, pass it in as a callback.
     if (name && email) {
-      this.setState({ showNameAndEmailNotice: false })
+      this.setState({ hideNameAndEmailNotice: true }, () => this.changeCanPayState() )
     } else {
-      this.setState({ showNameAndEmailNotice: true })
+      this.setState({ hideNameAndEmailNotice: false }, () => this.changeCanPayState() )
     }
   }
 
   changeAddressNoticeState(address, address2, city, state, zip) {
+    // setState() does not immediately mutate this.state but creates a pending state transition.
+    // If you want a function to be executed after the state change occurs, pass it in as a callback.
     if (address && address2 && city && state && zip) {
-      this.setState({ showAddressNotice: false })
+      this.setState({ hideAddressNotice: true }, () => this.changeCanPayState() )
     } else {
-      this.setState({ showAddressNotice: true })
+      this.setState({ hideAddressNotice: false }, () => this.changeCanPayState() )
     }
   }
 
   changeTermsNoticeState() {
-    this.setState({ showTermsNotice: !this.state.showTermsNotice })
+    // setState() does not immediately mutate this.state but creates a pending state transition.
+    // If you want a function to be executed after the state change occurs, pass it in as a callback.
+    this.setState({ hideTermsNotice: !this.state.hideTermsNotice }, () => this.changeCanPayState() )
+  }
+
+  changeCanPayState() {
+    state = this.state
+
+    if (state.hideNameAndEmailNotice && state.hideAddressNotice && state.hideTermsNotice) {
+      this.setState({ canPay: true })
+    } else {
+      this.setState({ canPay: false })
+    }
   }
 
   render () {
@@ -72,12 +88,13 @@ class CheckoutContainer extends Component {
                 </div>
                 <div className="row">
                   <div className="col-md-2">
-                    <PayButton pay={this.state.pay} />
+                    <PayButton canPay={this.state.canPay} />
                   </div>
                     <Notices
-                      showNameAndEmailNotice={this.state.showNameAndEmailNotice}
-                      showAddressNotice={this.state.showAddressNotice}
-                      showTermsNotice={this.state.showTermsNotice}
+                      hideNameAndEmailNotice={this.state.hideNameAndEmailNotice}
+                      hideAddressNotice={this.state.hideAddressNotice}
+                      hideTermsNotice={this.state.hideTermsNotice}
+                      canPay={this.state.canPay}
                     />
                 </div>
               </div>

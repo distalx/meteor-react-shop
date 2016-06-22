@@ -5,30 +5,41 @@ class Notices extends Component {
     super(props)
   }
 
-  showNameAndEmailNotice() {
+  renderNameAndEmailNotice() {
     return <li>Your name and email</li>
   }
 
-  showAddressNotice() {
+  renderAddressNotice() {
     return <li>Your shipping address</li>
   }
 
-  showTermsNotice() {
+  renderTermsNotice() {
     return <li>agreement to our <a href="#">Terms and Conditions</a></li>
+  }
+
+  renderNotice() {
+    if (this.props.canPay) {
+      return (
+        <div className="alert alert-success">
+          <h5> <i className="glyphicon glyphicon-thumbs-up"></i> Good to go!</h5>
+        </div>
+      )
+    }
+
+    return (
+      <div className="alert alert-info">
+        All we need is
+        { this.props.hideNameAndEmailNotice ? '' : this.renderNameAndEmailNotice() }
+        { this.props.hideAddressNotice ? '' : this.renderAddressNotice() }
+        { this.props.hideTermsNotice ? '' : this.renderTermsNotice() }
+      </div>
+    )
   }
 
   render() {
     return(
       <div className="col-md-8">
-        <div className="alert alert-info">
-          All we need is
-          { this.props.showNameAndEmailNotice ? this.showNameAndEmailNotice() : '' }
-          { this.props.showAddressNotice ? this.showAddressNotice() : '' }
-          { this.props.showTermsNotice ? this.showTermsNotice() : '' }
-        </div>
-        <div className="alert alert-success">
-          <h5> <i className="glyphicon glyphicon-thumbs-up"></i> Good to go!</h5>
-        </div>
+        {this.renderNotice()}
       </div>
     )
   }

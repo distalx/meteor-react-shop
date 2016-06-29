@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class PaymentMethod extends Component {
   render() {
@@ -11,8 +11,8 @@ class PaymentMethod extends Component {
           </label>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default PaymentMethod
+export default PaymentMethod;

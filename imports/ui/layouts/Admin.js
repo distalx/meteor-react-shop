@@ -1,13 +1,13 @@
-import { Meteor } from 'meteor/meteor'
-import React, { Component } from 'react'
-import { Roles } from 'meteor/alanning:roles'
-import { browserHistory } from 'react-router'
+import { Meteor } from 'meteor/meteor';
+import React, { Component, PropTypes } from 'react';
+import { Roles } from 'meteor/alanning:roles';
+import { browserHistory } from 'react-router';
 
-import Sidebar from '../components/admin/shared/Sidebar'
+import Sidebar from '../components/admin/shared/Sidebar';
 
 class Admin extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   componentWillMount() {
@@ -24,8 +24,12 @@ class Admin extends Component {
         <Sidebar />
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 
-export default Admin
+Admin.PropTypes = {
+  children: PropTypes.object.isRequired
+};
+
+export default Admin;

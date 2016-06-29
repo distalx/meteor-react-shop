@@ -1,35 +1,39 @@
-import { Meteor } from 'meteor/meteor'
-import React, { Component } from 'react'
-import { createContainer } from 'meteor/react-meteor-data'
+import { Meteor } from 'meteor/meteor';
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
 
-import { Carts } from '../../api/carts/carts'
-import CheckoutDetail from '../components/checkout/CheckoutDetail'
-import NameAndEmail from '../components/checkout/NameAndEmail'
-import ShippingAddress from '../components/checkout/ShippingAddress'
-import PaymentMethod from '../components/checkout/PaymentMethod'
-import Notices from '../components/checkout/Notices'
-import PayButton from '../components/checkout/PayButton'
-import Redirect from '../components/shared/Redirect'
+import { Carts } from '../../api/carts/carts';
+import CheckoutDetail from '../components/checkout/CheckoutDetail';
+import NameAndEmail from '../components/checkout/NameAndEmail';
+import ShippingAddress from '../components/checkout/ShippingAddress';
+import PaymentMethod from '../components/checkout/PaymentMethod';
+import Notices from '../components/checkout/Notices';
+import PayButton from '../components/checkout/PayButton';
+import Redirect from '../components/shared/Redirect';
 
 class CheckoutContainer extends Component {
   constructor(props){
-    super(props)
+    super(props);
 
     this.state = {
       hideNameAndEmailNotice: false,
       hideAddressNotice: false,
       hideTermsNotice: false,
       canPay: false
-    }
+    };
+
+    this.changeNameAndEmailNoticeState = this.changeNameAndEmailNoticeState.bind(this);
+    this.changeAddressNoticeState = this.changeAddressNoticeState.bind(this);
+    this.changeTermsNoticeState = this.changeTermsNoticeState.bind(this);
   }
 
   changeNameAndEmailNoticeState(name, email) {
     // setState() does not immediately mutate this.state but creates a pending state transition.
     // If you want a function to be executed after the state change occurs, pass it in as a callback.
     if (name && email) {
-      this.setState({ hideNameAndEmailNotice: true }, () => this.changeCanPayState() )
+      this.setState({ hideNameAndEmailNotice: true }, () => this.changeCanPayState() );
     } else {
-      this.setState({ hideNameAndEmailNotice: false }, () => this.changeCanPayState() )
+      this.setState({ hideNameAndEmailNotice: false }, () => this.changeCanPayState() );
     }
   }
 
@@ -37,30 +41,30 @@ class CheckoutContainer extends Component {
     // setState() does not immediately mutate this.state but creates a pending state transition.
     // If you want a function to be executed after the state change occurs, pass it in as a callback.
     if (address && address2 && city && state && zip) {
-      this.setState({ hideAddressNotice: true }, () => this.changeCanPayState() )
+      this.setState({ hideAddressNotice: true }, () => this.changeCanPayState() );
     } else {
-      this.setState({ hideAddressNotice: false }, () => this.changeCanPayState() )
+      this.setState({ hideAddressNotice: false }, () => this.changeCanPayState() );
     }
   }
 
   changeTermsNoticeState() {
     // setState() does not immediately mutate this.state but creates a pending state transition.
     // If you want a function to be executed after the state change occurs, pass it in as a callback.
-    this.setState({ hideTermsNotice: !this.state.hideTermsNotice }, () => this.changeCanPayState() )
+    this.setState({ hideTermsNotice: !this.state.hideTermsNotice }, () => this.changeCanPayState() );
   }
 
   changeCanPayState() {
-    state = this.state
+    const state = this.state;
 
     if (state.hideNameAndEmailNotice && state.hideAddressNotice && state.hideTermsNotice) {
-      this.setState({ canPay: true })
+      this.setState({ canPay: true });
     } else {
-      this.setState({ canPay: false })
+      this.setState({ canPay: false });
     }
   }
 
   render () {
-    if(!this.props.cart) { return <Redirect /> }
+    if(!this.props.cart) { return <Redirect />; }
 
     return (
       <div className="container" id="checkout-panel">
@@ -71,9 +75,9 @@ class CheckoutContainer extends Component {
         </ol>
         <div className="col-md-12">
           <div className="col-md-8">
-            <NameAndEmail changeNameAndEmailNoticeState={this.changeNameAndEmailNoticeState.bind(this)}/>
+            <NameAndEmail changeNameAndEmailNoticeState={this.changeNameAndEmailNoticeState}/>
             <hr/>
-            <ShippingAddress changeAddressNoticeState={this.changeAddressNoticeState.bind(this)}/>
+            <ShippingAddress changeAddressNoticeState={this.changeAddressNoticeState}/>
             <hr/>
             <PaymentMethod />
             <hr/>
@@ -82,7 +86,7 @@ class CheckoutContainer extends Component {
                 <h3>Terms and Conditions</h3>
                 <div className="checkbox">
                   <label>
-                  <input type="checkbox" onClick={this.changeTermsNoticeState.bind(this)} />
+                  <input type="checkbox" onClick={this.changeTermsNoticeState} />
                   I agree to <a href="#">Terms and Conditions</a>
                   </label>
                 </div>
@@ -103,12 +107,16 @@ class CheckoutContainer extends Component {
           <CheckoutDetail cartItems={this.props.cart.cartItems} />
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default createContainer(() => {
-  Meteor.subscribe('cart', Meteor.userId())
+CheckoutContainer.propTypes = {
+  cart: PropTypes.object.isRequired
+};
 
-  return { cart: Carts.findOne({userId: Meteor.userId()})}
-}, CheckoutContainer)
+export default createContainer(() => {
+  Meteor.subscribe('cart', Meteor.userId());
+
+  return { cart: Carts.findOne({userId: Meteor.userId()})};
+}, CheckoutContainer);

@@ -1,25 +1,28 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 
 class NameAndEmail extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+
+    this.changeName = this.changeName.bind(this);
+    this.changeEmail = this.changeEmail.bind(this);
   }
 
   changeName(event) {
     const name = event.target.value;
-    this.checkFilled()
+    this.checkFilled();
   }
 
   changeEmail(event) {
     const email = event.target.value;
-    this.checkFilled()
+    this.checkFilled();
   }
 
   checkFilled() {
-    const name = ReactDOM.findDOMNode(this.refs.nameInput).value.trim()
-    const email = ReactDOM.findDOMNode(this.refs.emailInput).value.trim()
-    this.props.changeNameAndEmailNoticeState(name, email)
+    const name = ReactDOM.findDOMNode(this.refs.nameInput).value.trim();
+    const email = ReactDOM.findDOMNode(this.refs.emailInput).value.trim();
+    this.props.changeNameAndEmailNoticeState(name, email);
   }
 
   render(){
@@ -30,30 +33,34 @@ class NameAndEmail extends Component {
             <h3> Name and Email</h3>
             <div className="form-group">
               <input
-                maxlength="100"
+                maxLength="100"
                 type="text"
                 className="form-control"
                 placeholder="First and Last"
                 ref="nameInput"
-                onChange={this.changeName.bind(this)}
+                onChange={this.changeName}
               />
             </div>
             <div className="form-group">
               <input
-                maxlength="100"
+                maxLength="100"
                 type="text"
                 required="required"
                 className="form-control"
                 placeholder="Email"
                 ref="emailInput"
-                onChange={this.changeEmail.bind(this)}
+                onChange={this.changeEmail}
               />
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default NameAndEmail
+NameAndEmail.propTypes = {
+  changeNameAndEmailNoticeState: PropTypes.func
+};
+
+export default NameAndEmail;

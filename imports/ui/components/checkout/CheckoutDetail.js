@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import _ from 'underscore';
 
 class CheckoutDetail extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   calculateAmount() {
     return _.reduce(this.props.cartItems, (sum, cartItem) => {
-      return sum + ( cartItem.price * cartItem.quantity )
+      return sum + ( cartItem.price * cartItem.quantity );
     }, 0); // default sum == 0
   }
 
@@ -19,8 +20,8 @@ class CheckoutDetail extends Component {
           <td>{cartItem.quantity}</td>
           <td style={{textAlign: 'right'}}>$ {cartItem.price}</td>
         </tr>
-      )
-    })
+      );
+    });
   }
 
   render() {
@@ -59,12 +60,12 @@ class CheckoutDetail extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 CheckoutDetail.propTypes = {
   cartItems: React.PropTypes.array.isRequired
-}
+};
 
-export default CheckoutDetail
+export default CheckoutDetail;

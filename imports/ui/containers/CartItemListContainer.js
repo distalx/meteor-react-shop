@@ -1,15 +1,16 @@
-import React, { Component } from 'react'
-import { createContainer } from 'meteor/react-meteor-data'
+import { Meteor } from 'meteor/meteor';
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
 
-import CartItemList from '../components/cart/CartItemList'
-import Amount from '../components/cart/Amount'
-import { Carts } from '../../api/carts/carts'
-import Redirect from '../components/shared/Redirect'
+import CartItemList from '../components/cart/CartItemList';
+import Amount from '../components/cart/Amount';
+import { Carts } from '../../api/carts/carts';
+import Redirect from '../components/shared/Redirect';
 
 
 class CartItemListContainer extends Component {
   render() {
-    if(!this.props.cart) { return <Redirect /> }
+    if(!this.props.cart) { return <Redirect />; }
 
     return (
       <div className="container">
@@ -38,12 +39,16 @@ class CartItemListContainer extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default createContainer(() => {
-  Meteor.subscribe('cart', Meteor.userId())
+CartItemListContainer.propTypes = {
+  cart: PropTypes.object.isRequired
+};
 
-  return { cart: Carts.findOne({userId: Meteor.userId()}) }
-}, CartItemListContainer)
+export default createContainer(() => {
+  Meteor.subscribe('cart', Meteor.userId());
+
+  return { cart: Carts.findOne({userId: Meteor.userId()}) };
+}, CartItemListContainer);

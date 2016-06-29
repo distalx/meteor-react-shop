@@ -1,22 +1,23 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router'
-import { Bert } from 'meteor/themeteorchef:bert'
+import { Meteor } from 'meteor/meteor';
+import React, { Component } from 'react';
+import { Link } from 'react-router';
+import { Bert } from 'meteor/themeteorchef:bert';
 
 class ProductList extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   addToCart() {
     // this == product
-    Meteor.call('addToCart', this)
+    Meteor.call('addToCart', this);
 
-    Bert.alert( 'Product Added!', 'success', 'growl-bottom-right' )
+    Bert.alert( 'Product Added!', 'success', 'growl-bottom-right' );
   }
 
   renderProducts() {
     return this.props.products.map((product) => {
-      const url = `/products/${product._id}`
+      const url = `/products/${product._id}`;
 
       return (
         <div key={product._id} className="thumb">
@@ -45,8 +46,8 @@ class ProductList extends Component {
 
           </div>
         </div>
-      )
-    })
+      );
+    });
   }
 
   render() {
@@ -54,12 +55,12 @@ class ProductList extends Component {
       <div className="product-list">
         {this.renderProducts()}
       </div>
-    )
+    );
   }
 }
 
 ProductList.propTypes = {
   products: React.PropTypes.array.isRequired
-}
+};
 
-export default ProductList
+export default ProductList;

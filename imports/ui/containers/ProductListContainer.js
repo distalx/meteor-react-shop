@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-import { createContainer } from 'meteor/react-meteor-data'
+import { Meteor } from 'meteor/meteor';
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
 
 import { Products } from '../../../imports/api/products/products';
-import ProductList from '../components/product/ProductList'
+import ProductList from '../components/product/ProductList';
 
 class ProductListContainer extends Component {
   render() {
-    if (!this.props.products) { return <div>Loading...</div> }
+    if (!this.props.products) { return <div>Loading...</div>; }
 
     return(
       <div>
@@ -29,13 +30,17 @@ class ProductListContainer extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
+ProductListContainer.propTypes = {
+  products: PropTypes.array.isRequired
+};
+
 // subscribe products from server
 export default createContainer(() => {
-  Meteor.subscribe('products')
+  Meteor.subscribe('products');
 
-  return { products: Products.find({}).fetch() }
-}, ProductListContainer)
+  return { products: Products.find({}).fetch() };
+}, ProductListContainer);

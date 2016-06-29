@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router'
+import React, { Component } from 'react';
+import _ from 'underscore';
+import { Link } from 'react-router';
 
 class Amount extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   calculateAmount() {
     return _.reduce(this.props.cartItems, (sum, cartItem) => {
-      return sum + ( cartItem.price * cartItem.quantity )
+      return sum + ( cartItem.price * cartItem.quantity );
     }, 0); // default sum == 0
   }
 
@@ -26,12 +27,12 @@ class Amount extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 Amount.propTypes = {
 	cartItems: React.PropTypes.array.isRequired
-}
+};
 
-export default Amount
+export default Amount;

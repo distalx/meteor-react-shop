@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Redirect = () => {
   return(
@@ -11,8 +11,8 @@ const Redirect = () => {
           </div>
         </div>
       </div>
-    </div>    
-  )
-}
+    </div>
+  );
+};
 
-export default Redirect
+export default Redirect;

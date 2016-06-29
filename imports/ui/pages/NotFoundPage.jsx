@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-export default NoFound = () => {
+const NoFound = () => {
   return (
     <div className="container">
       <div className="row">
@@ -25,5 +25,7 @@ export default NoFound = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default NoFound;

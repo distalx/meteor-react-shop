@@ -1,26 +1,28 @@
-import { Meteor } from 'meteor/meteor'
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import { Bert } from 'meteor/themeteorchef:bert'
+import { Meteor } from 'meteor/meteor';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { Bert } from 'meteor/themeteorchef:bert';
 
 class CartItem extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+
+    this.changeQuantity = this.changeQuantity.bind(this);
   }
 
   removeCartItem() {
-    Meteor.call('removeFromCart', this.productId)
+    Meteor.call('removeFromCart', this.productId);
 
-    Bert.alert( 'Product Removed.', 'info', 'growl-bottom-right' )
+    Bert.alert( 'Product Removed.', 'info', 'growl-bottom-right' );
   }
 
   changeQuantity(event) {
     const quantity = event.target.value;
-    Meteor.call('changeQuantity', this.props.cartItem.productId, quantity)
+    Meteor.call('changeQuantity', this.props.cartItem.productId, quantity);
   }
 
   render() {
-    const { cartItem } = this.props
+    const { cartItem } = this.props;
 
     return(
       <div className="row">
@@ -40,7 +42,7 @@ class CartItem extends Component {
               className="form-control input-sm"
               type="number"
               value={cartItem.quantity}
-              onChange={this.changeQuantity.bind(this)}
+              onChange={this.changeQuantity}
             />
           </div>
           <div className="col-xs-2">
@@ -50,12 +52,12 @@ class CartItem extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 CartItem.propTypes = {
 	cartItem: React.PropTypes.object.isRequired
-}
+};
 
-export default CartItem
+export default CartItem;

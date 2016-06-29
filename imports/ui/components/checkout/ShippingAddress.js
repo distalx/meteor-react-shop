@@ -1,30 +1,41 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 
 class ShippingAddress extends Component {
+  constructor(props) {
+    super(props);
+
+    this.changeAddress= this.changeAddress.bind(this);
+    this.changeAddress2 = this.changeAddress2.bind(this);
+    this.changeState = this.changeState.bind(this);
+    this.changeZip = this.changeZip.bind(this);
+    this.changeCity = this.changeCity.bind(this);
+    this.changeCountry = this.changeCountry.bind(this);
+  }
+
   changeAddress(event) {
     const address = event.target.value;
-    this.checkFilled()
+    this.checkFilled();
   }
 
   changeAddress2(event) {
     const address2 = event.target.value;
-    this.checkFilled()
+    this.checkFilled();
   }
 
   changeCity(event) {
     const city = event.target.value;
-    this.checkFilled()
+    this.checkFilled();
   }
 
   changeState(event) {
     const state = event.target.value;
-    this.checkFilled()
+    this.checkFilled();
   }
 
   changeZip(event) {
     const zip = event.target.value;
-    this.checkFilled()
+    this.checkFilled();
   }
 
   changeCountry(event) {
@@ -32,13 +43,13 @@ class ShippingAddress extends Component {
   }
 
   checkFilled() {
-    const address = ReactDOM.findDOMNode(this.refs.address).value.trim()
-    const address2 = ReactDOM.findDOMNode(this.refs.address2).value.trim()
-    const city = ReactDOM.findDOMNode(this.refs.city).value.trim()
-    const state = ReactDOM.findDOMNode(this.refs.state).value.trim()
-    const zip = ReactDOM.findDOMNode(this.refs.zip).value.trim()
+    const address = ReactDOM.findDOMNode(this.refs.address).value.trim();
+    const address2 = ReactDOM.findDOMNode(this.refs.address2).value.trim();
+    const city = ReactDOM.findDOMNode(this.refs.city).value.trim();
+    const state = ReactDOM.findDOMNode(this.refs.state).value.trim();
+    const zip = ReactDOM.findDOMNode(this.refs.zip).value.trim();
 
-    this.props.changeAddressNoticeState(address, address2, city, state, zip)
+    this.props.changeAddressNoticeState(address, address2, city, state, zip);
   }
 
   render() {
@@ -48,26 +59,26 @@ class ShippingAddress extends Component {
           <div className="col-md-12">
             <h3>Shipping Address</h3>
             <div className="form-group">
-              <input type="text" placeholder="Address Line 1" ref="address" className="form-control" onChange={this.changeAddress.bind(this)} />
+              <input type="text" placeholder="Address Line 1" ref="address" className="form-control" onChange={this.changeAddress} />
             </div>
             <div className="form-group">
-              <input type="text" placeholder="Address Line 2" ref="address2" className="form-control" onChange={this.changeAddress2.bind(this)}/>
+              <input type="text" placeholder="Address Line 2" ref="address2" className="form-control" onChange={this.changeAddress2}/>
             </div>
             <div className="form-group">
-              <input type="text" placeholder="City" className="form-control" ref="city" onChange={this.changeCity.bind(this)} />
+              <input type="text" placeholder="City" className="form-control" ref="city" onChange={this.changeCity} />
             </div>
             <div className="form-group">
               <div className="row">
                 <div className="col-md-2">
-                  <input type="text" placeholder="State" className="form-control" ref="state" onChange={this.changeState.bind(this)} />
+                  <input type="text" placeholder="State" className="form-control" ref="state" onChange={this.changeState} />
                 </div>
                 <div className="col-md-2">
-                  <input type="text" placeholder="Post Code" className="form-control" ref="zip" onChange={this.changeZip.bind(this)} />
+                  <input type="text" placeholder="Post Code" className="form-control" ref="zip" onChange={this.changeZip} />
                 </div>
               </div>
             </div>
             <div className="form-group ">
-              <select name="country" ref="country" className="form-control" placeholder="country" defaultValue="US" onChange={this.changeCountry.bind(this)} >
+              <select name="country" ref="country" className="form-control" placeholder="country" defaultValue="US" onChange={this.changeCountry} >
                 <option value="AR">Argentina</option>
                 <option value="AU">Australia</option>
                 <option value="AT">Austria</option>
@@ -164,8 +175,12 @@ class ShippingAddress extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default ShippingAddress
+ShippingAddress.propTypes = {
+  changeAddressNoticeState: PropTypes.func
+};
+
+export default ShippingAddress;

@@ -1,22 +1,22 @@
-import { Meteor } from 'meteor/meteor'
-import { Mongo } from 'meteor/mongo'
-import _ from 'underscore'
+import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
+import _ from 'underscore';
 
-import './methods'
+import './methods';
 
-import { Carts } from '../carts/carts'
+import { Carts } from '../carts/carts';
 
-export const Products = new Mongo.Collection('products')
+export const Products = new Mongo.Collection('products');
 
 // TODO Weird, doesn't work
 Products.allow({
   insert: (userId, product) => {
-    return Meteor.call('isAdmin')
+    return Meteor.call('isAdmin');
   },
   update: (userId, product) => {
-    return Meteor.call('isAdmin')
+    return Meteor.call('isAdmin');
   },
   remove: (userId, product) => {
-    return Meteor.call('isAdmin')
+    return Meteor.call('isAdmin');
   }
-})
+});

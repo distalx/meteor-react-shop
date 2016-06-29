@@ -1,12 +1,12 @@
-import { Meteor } from 'meteor/meteor'
-import React, { Component } from 'react'
+import { Meteor } from 'meteor/meteor';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
-import CartItem from './CartItem'
+import CartItem from './CartItem';
 
 class CartItemList extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   renderCartItems() {
@@ -16,8 +16,8 @@ class CartItemList extends Component {
           <CartItem cartItem={cartItem} />
           <hr />
         </div>
-      )
-    })
+      );
+    });
   }
 
   render() {
@@ -25,12 +25,12 @@ class CartItemList extends Component {
       <div className="panel-body">
         {this.renderCartItems()}
       </div>
-    )
+    );
   }
 }
 
-CartItem.propTypes = {
-	cartItems: React.PropTypes.array
-}
+CartItemList.propTypes = {
+	cartItems: PropTypes.array
+};
 
-export default CartItemList
+export default CartItemList;

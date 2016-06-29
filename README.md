@@ -1,6 +1,8 @@
 # Meteor React Shop
 
-This is a simple e-commerce website built with Meteor 1.3 and React!
+This is a simple e-commerce website built with Meteor and React.
+
+![](./public/images/domo.png)
 
 ## How to Start
 
@@ -21,7 +23,7 @@ Account  : admin
 Password : admin
 ```
 
-## Barriers to Overcome
+## Todo
 
 If you know how to solve these problems please make a pull requests !
 
